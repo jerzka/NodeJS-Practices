@@ -1,0 +1,16 @@
+{
+  "name": "practise4-nodejs",
+  "version": "1.0.0",
+  "description": "run a server and generate document with fetch",
+  "type":"module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Katarzyna Jerzmanowska",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
