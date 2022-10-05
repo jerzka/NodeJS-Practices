@@ -1,14 +1,20 @@
-import { productConstructor } from './client/productConstructor.js'
-
-const productsArray = [
-    productConstructor("Café Americano", "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-03/3-CaffeAmericano_ContactShadow_Green.png?itok=Kl-bJG_e", "In the morning"),
-    productConstructor("Café au Lait", "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-05/10032021_BAB_CAFE_AU_LAIT_CS-min.png?itok=JoWLDPcf", "In the afternoon"),
-    productConstructor("Capuccino", "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-05/10032021_CAPPUCCINO_CS-min.png?itok=n_45xlrE", "In the evening"),
-    productConstructor("Vanilla Latte", "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-03/Vanilla%20Latte_ContactShadow_Green.png?itok=0XAQ8A-O", "In the afternoon")
+const products = [
+    { prodName: "Café Americano",
+      prodPhoto: "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-03/3-CaffeAmericano_ContactShadow_Green.png?itok=Kl-bJG_e", 
+      prodDesc: "In the morning"
+    },
+    { prodName: "Café au Lait",
+      prodPhoto: "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-05/10032021_BAB_CAFE_AU_LAIT_CS-min.png?itok=JoWLDPcf", 
+      prodDesc: "In the afternoon"
+    },
+    { prodName: "Capuccino",
+      prodPhoto: "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-05/10032021_CAPPUCCINO_CS-min.png?itok=n_45xlrE",
+      prodDesc: "In the evening"
+    },
+    { prodName: "Vanilla Latte", 
+      prodPhoto: "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-03/Vanilla%20Latte_ContactShadow_Green.png?itok=0XAQ8A-O", 
+      prodDesc: "In the afternoon"
+    }
 ];
 
-productsArray.map((product) => {
-    product.populate();
-});
-
-export default productsArray;
+module.exports = products;

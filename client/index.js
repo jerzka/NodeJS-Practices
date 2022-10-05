@@ -1,5 +1,33 @@
-
-// let show = true;
+const productConstructor = (product) => {
+    return {
+        cardTitle: product.prodName,
+        cardImage: product.prodPhoto,
+        cardDesc: product.prodDesc,
+        cardPrice: (Math.random()*10).toFixed(2),
+        get quantity() {
+            return this._quantity;
+        },
+        set quantity(value){
+            this._quantity = value;
+        },
+        sellOne: function(evt){
+            console.log("one sold");
+          
+            if(this.quantity > 0){
+                this.quantity -= 1; 
+                evt.target.textContent = `Buy one of ${this.quantity}`;  
+            }
+            else{
+                evt.target.classList.add('disabled');
+                alert("Sorry, product is not available.");
+            }
+        },
+        populate: function() {
+            this.quantity = Number((Math.random()*10).toFixed());
+            this.sellOne = this.sellOne.bind(this);
+        }
+    }
+};
 
 function render(product){
     const container = document.getElementById("productsContainer");
@@ -62,11 +90,12 @@ function create(product) {
 // }
 
 const fetchProducts = async () =>{
-    const productsData = await fetch("http://127.0.0.1:3002/products");
+    const productsData = await fetch("products");
     const products = await productsData.json();
     products.map((product) => {
-        //document.getElementById('productsContainer').insertAdjacentHTML('beforeend', generateHTML(product));
-        render(product);
+        const fullProduct = productConstructor(product);
+        fullProduct.populate();
+        render(fullProduct);
     });
 }
 
