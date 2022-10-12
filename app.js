@@ -9,20 +9,37 @@ const port = 3002;
 // const __dirname = path.dirname(__filename);
 
 
-console.log('directory-name', __dirname+'/client/index.js');
+//console.log('directory-name', __dirname+'/client/index.js');
 
-app.use(express.static(path.join(__dirname, './client/public')));
+app.use(express.static(path.join(__dirname, '/client/public')));
 
-app.get('/homeJs', (req, res) => {
-    res.sendFile(__dirname + '/client/index.js');
+app.get('/signup', (req, res) => {
+    res.sendFile(__dirname +'/client/signup.html');
 });
 
-app.get('login', (req, res) => {
-    res.send("Sign in page");
+app.post('/singup', (req, res) => {
+
+}); 
+
+app.get('/signin', (req, res) => {
+    res.sendFile(__dirname +'/client/signin.html');
 });
 
-app.get('/register', (req, res) => {
-    res.send("Sing up page");
+app.post('/singin', (req, res) => {
+
+}); 
+
+
+// app.post('/login', async (req, res) => {
+//     const userInfo = req.body;
+//     let loogedIn = false;
+//     await if(userInfo.){
+        
+//     }
+// });
+
+app.get('/home', (req, res) => {
+    res.sendFile(__dirname +'/client/home.html');
 });
 
 app.get('/', (req, res) => {
