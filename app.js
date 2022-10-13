@@ -2,12 +2,16 @@ const express = require("express");
 const path = require("path");
 const products = require('./products');
 
+const bodyParser = require("body-parser");
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 const app = express();
 const port = 3002;
 
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
-
+const users = [];
+let loggedIn = false;
 
 //console.log('directory-name', __dirname+'/client/index.js');
 
@@ -17,29 +21,44 @@ app.get('/signup', (req, res) => {
     res.sendFile(__dirname +'/client/signup.html');
 });
 
-app.post('/singup', (req, res) => {
-
-}); 
+app.post('/signup', urlencodedParser, (req, res) => {
+    const newId = users.length === 0 ? 0 : users[users.length - 1].id + 1;
+    const newUser = {
+      id: newId,
+      user: req.body.userInput,
+      email: req.body.emailInput,
+      password: req.body.passwordInput
+    };
+  
+    users.push(newUser);
+    //res.send(users);
+    res.redirect("/signin");
+  
+  });
 
 app.get('/signin', (req, res) => {
     res.sendFile(__dirname +'/client/signin.html');
 });
 
-app.post('/singin', (req, res) => {
+app.post('/signin', urlencodedParser, (req, res) => {
+    const userInfo = req.body;
 
-}); 
-
-
-// app.post('/login', async (req, res) => {
-//     const userInfo = req.body;
-//     let loogedIn = false;
-//     await if(userInfo.){
-        
-//     }
-// });
+    if(users.findIndex((x) => (x.user === userInfo.userInput && x.password === userInfo.passwordInput ))){
+        loggedIn = true;
+        res.redirect("/home");
+    }
+    else {
+        res.send("Acces denied");
+    }
+});
 
 app.get('/home', (req, res) => {
     res.sendFile(__dirname +'/client/home.html');
+});
+
+app.get('/logout', (req, res) => {
+    loggedIn = false;
+    res.redirect('/signin');
 });
 
 app.get('/', (req, res) => {

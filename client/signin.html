@@ -20,18 +20,18 @@
 <body class="text-center">
     <div class="container">
     <main  id="form-signin" class="m-auto" aria-label="login form">
-        <form class="px-5 needs-validation" novalidate>
+        <form class="px-5 needs-validation" action="/signin" method="post" novalidate>
             <div id="logo" class="bg-primary my-2 mx-auto">
                 <img src="images/logo_WhatToWear_opaque.svg" width="80px" alt="Logo What to wear?" aria-label="Logo What to wear today?" >
             </div>
             <div class="form-row">
-                <input id="userInput" class="form-control" type="text" placeholder="Your login" aria-label="user login" required>
+                <input name="userInput" class="form-control" type="text" placeholder="Your login" autocomplete="username" aria-label="user login" required>
             </div>
             <div class="form-row">
-                <input id="passwordInput" class="form-control" type="password" placeholder="Your password" aria-label="user password" required>
+                <input name="passwordInput" class="form-control" type="password" placeholder="Your password" autocomplete="current-password" aria-label="user password" required>
             </div>
             <p>Don't have an account? <a href="/signup">Register</a> now.</p>
-            <a id="submit-btn" class="w-100 btn btn-lg btn-primary text-white" type="submit" aria-label="login submit button">Sign in</a>
+            <input id="submit-btn" class="w-100 btn btn-lg btn-primary text-white" type="submit" aria-label="login submit button" value="Sign in" />
         </form>
         
     </main>
