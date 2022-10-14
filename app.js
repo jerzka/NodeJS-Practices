@@ -1,6 +1,12 @@
 const express = require("express");
 const path = require("path");
 const products = require('./products');
+// const { getUsers } = require('controllers/user.controller')
+const mongoose = require("mongoose");
+
+mongoose.connect('mongodb+srv://jerzka:jerzkaDB23@katemongodb.roxoohv.mongodb.net/?retryWrites=true&w=majority') // link
+    .then(() => console.log('Connect to MongoDB'))
+    .catch(err => console.error(err));
 
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -20,6 +26,51 @@ app.use(express.static(path.join(__dirname, '/client/public')));
 app.get('/signup', (req, res) => {
     res.sendFile(__dirname +'/client/signup.html');
 });
+
+app.get('/api/users', async (req, res) => {
+    try{
+        const users = await User.find();
+        res.send(users);
+    }
+    catch(err){
+        res.send({messages: 'Something get wrong!'});
+    }
+})//getUsers);
+
+app.get('/api/user/:id', async (req, res) => {
+    try{
+        const user = await User.findById(req.params.id)
+        res.send(user);
+    }
+    catch(err){
+        res.send({messages: 'Something get wrong!'})
+    }
+});
+
+app.post('/api/users/register', async (req, res) => {
+    let newUser = await new User(req.body);
+    newUser = await newUser.save();
+    console.log(newUser);
+    res.send(newUser);
+    return
+})
+
+app.patch('/api/user/:id', async (req, res) => {
+    let user = await User.findById(req.params.id);
+    user = await user.updateOne({"email":"newemil@com.com"});
+    req.send(user);
+    return
+})
+
+app.delete('/api/user/:id', async (req, res) => {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if(!user){
+        res.status(404).send({message:"User not found"});
+    }
+    else{
+        res.send(user);
+    }
+})
 
 app.post('/signup', urlencodedParser, (req, res) => {
     const newId = users.length === 0 ? 0 : users[users.length - 1].id + 1;
