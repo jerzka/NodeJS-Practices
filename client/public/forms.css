@@ -1,25 +1,16 @@
 :root {
   --basic-color: steelblue;
-  /*lightslategrey*/
   --darken-basic-color: rgb(112, 128, 144);
-  /*slategrey*/
-  --lighter-basic-color: lightsteelblue;
+  --lighter-accent-color:  rgba(241, 165, 189, 0.5);
   --accent-color: rgb(226, 115, 150);
   --logo-size: 100px;
 }
 
-
 body {
-  background: url("images/background_AdobeStock_169277666.jpg") no-repeat;
-  background-size: cover;
-  background-position: center;
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
+  padding: 15% 0;
+  justify-content: center;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding: 15% 0;
 }
 
 #form-signup, #form-signin {

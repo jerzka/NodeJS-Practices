@@ -1,16 +1,13 @@
 :root {
     --basic-color: steelblue;
-    /*lightslategrey*/
     --darken-basic-color: rgb(112, 128, 144);
-    /*slategrey*/
     --lighter-basic-color: lightsteelblue;
     --accent-color: rgb(226, 115, 150);
     --logo-size: 70px;
 }
 
-
 body {
-    background: url("images/background-main_AdobeStock_169277666.jpg") no-repeat;
+    background: url("images/background_AdobeStock_169277666.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     background-position-y: -170px;
@@ -96,8 +93,9 @@ footer>p {
 }
 
 #intro{
-    margin-top: 7rem;
+    margin-top: 6rem;
 }
+
 .intro-heading{
     font-size: 2rem;
 }
@@ -111,14 +109,14 @@ footer>p {
 }
 
 /* --- RESPONSIVE CSS  -------------------------------------------------- */
+@media (min-width: 75em) {
+
+    body{
+        background-position-y: -250px;
+    }
+}
 
 @media (min-width: 62em) {
-    .date {
-        width: 25%;
-        padding: 1rem;
-        background-color: rgba(255, 255, 255, 0.7);
-    }
-
     #intro{
         margin-top: 9rem;
     }
