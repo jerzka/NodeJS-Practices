@@ -2,11 +2,12 @@ const express = require("express");
 const path = require("path");
 const products = require('./products');
 // const { getUsers } = require('controllers/user.controller')
-const { PORT, API_KEY } = require('./config');
-
+//const { API_KEY } = require('./config');
+const { env } = require("process");
 const mongoose = require("mongoose");
 
-mongoose.connect(API_KEY)
+console.log(env.API_KEY);
+mongoose.connect(env.API_KEY)
     .then(() => console.log('Connect to MongoDB'))
     .catch(err => console.error(err));
 
@@ -14,7 +15,7 @@ const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const app = express();
-const port = PORT;
+const port = 3002;
 
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
