@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
-const { API_KEY } = require('../config');
-const { env } = require("process");
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 let connection = undefined;
-const getConnection = async() =>{
-    console.log("envi " + env.API_KEY);
+console.log(process.env.API_KEY);
 
+const getConnection = async() =>{
     if(connection) {
         console.log("returning existing connection");
         return connection;
     }
     else{
         console.log("create new connection")
-        connection = await mongoose.connect(env.API_KEY);
+        connection = await mongoose.connect(process.env.API_KEY);
         return connection;
     }
 }
