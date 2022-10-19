@@ -3,8 +3,9 @@ const { API_KEY } = require('../config');
 const { env } = require("process");
 
 let connection = undefined;
-
 const getConnection = async() =>{
+    console.log("envi " + env.API_KEY);
+
     if(connection) {
         console.log("returning existing connection");
         return connection;
