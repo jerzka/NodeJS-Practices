@@ -73,3 +73,11 @@ footer span{
 footer > p{
   font-size: .6rem;
 }
+
+body .errorToast:not(.show) {
+  display: block;
+  position: fixed;
+  top: 17px;
+  right: 21px;
+
+}

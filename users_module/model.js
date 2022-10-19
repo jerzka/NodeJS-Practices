@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+const { getConnection, Schema, mongoose } = require('../db/mongoose');
+getConnection();
 
-
-const User = mongoose.model('User', new mongoose.Schema({
+const userModel = mongoose.model('Users', new Schema({
     name: {
         type: String,
         required: [true, "Name is required"]
@@ -10,19 +10,21 @@ const User = mongoose.model('User', new mongoose.Schema({
         type: String,
         required: [true, "Email is required"],
         unique: true,
-        match: [/{a-A}/g, 'Invalid email format'],
+        match: [/^\S+@\S+$/g, 'invalid email format'],
         min: 4,
         max: 255
     },
     password: {
         type: String,
         required: [true, "Password is required"],
-        min: 8,
+        min: 4,
         max: 255
+    },
+    createdAt: {
+        type: Date, 
+        default: Date.now
     }
 })
 );
 
-module.exports = {
-    User
-}
+module.exports = userModel;
