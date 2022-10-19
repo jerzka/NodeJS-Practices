@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { API_KEY } = require('../config');
+const { env } = require("process");
 
 let connection = undefined;
 
@@ -10,7 +11,7 @@ const getConnection = async() =>{
     }
     else{
         console.log("create new connection")
-        connection = await mongoose.connect(API_KEY);
+        connection = await mongoose.connect(env.API_KEY);
         return connection;
     }
 }
