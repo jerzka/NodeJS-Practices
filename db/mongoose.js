@@ -14,7 +14,7 @@ const getConnection = async() =>{
     }
     else{
         console.log("create new connection")
-        connection = await mongoose.connect(process.env.API_KEY);
+        connection = await mongoose.connect('mongodb+srv://vercel-admin-user:qRxgqiUbhswDPmfc@katemongodb.roxoohv.mongodb.net/KateMongoDB?retryWrites=true&w=majority');
         return connection;
     }
 }

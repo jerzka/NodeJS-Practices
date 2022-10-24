@@ -27,4 +27,7 @@ const userModel = mongoose.model('Users', new Schema({
 })
 );
 
+userModel.hash = (password) => {}
+//userModel.comparePaswords();
+
 module.exports = userModel;

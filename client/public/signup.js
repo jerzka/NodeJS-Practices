@@ -71,10 +71,10 @@ const validateSignup = (formValue) => {
 
 
 const showError = (errorMessage) => {
-  const body = document.getElementsByTagName('body')[0]
-  console.log(body)
-  const randomNumber = Math.random()
-  const id = `toast-${randomNumber}`
+  const body = document.getElementsByTagName('body')[0];
+  console.log(body);
+  const randomNumber = Math.random();
+  const id = `toast-${randomNumber}`;
   body.insertAdjacentHTML('beforeend', `    
   <div id="${id}" class="toast errorToast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
@@ -88,9 +88,9 @@ const showError = (errorMessage) => {
 }
 
 const closeError = (id) => {
-  const toast = document.getElementById(id)
-  console.log(toast)
-  toast.style.display = 'none'
+  const toast = document.getElementById(id);
+  console.log(toast);
+  toast.style.display = 'none';
 }
 
 
