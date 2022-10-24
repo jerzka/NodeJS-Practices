@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 let connection = undefined;
-console.log(process.env.API_KEY);
+console.log(process.env.MONGODB_URI);
 
 const getConnection = async() =>{
     if(connection) {
@@ -14,7 +14,7 @@ const getConnection = async() =>{
     }
     else{
         console.log("create new connection")
-        connection = await mongoose.connect('mongodb+srv://vercel-admin-user:qRxgqiUbhswDPmfc@katemongodb.roxoohv.mongodb.net/KateMongoDB?retryWrites=true&w=majority');
+        connection = await mongoose.connect(process.env.MONGODB_URI);
         return connection;
     }
 }
