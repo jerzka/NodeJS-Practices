@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
- require('dotenv').config();
+require('dotenv').config();
 
 let connection = undefined;
-console.log(process.env.MONGODB_URI);
+console.log(process.env.API_KEY);
 
 const getConnection = async() =>{
     if(connection) {
@@ -11,7 +11,7 @@ const getConnection = async() =>{
     }
     else{
         console.log("create new connection")
-        connection = await mongoose.connect(process.env.MONGODB_URI);
+        connection = await mongoose.connect(process.env.API_KEY);
         return connection;
     }
 }
